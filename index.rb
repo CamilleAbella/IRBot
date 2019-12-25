@@ -1,5 +1,5 @@
 
-require "json"
+require 'json'
 require 'discordrb'
 
 file = File.open "./config.json"
