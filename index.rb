@@ -4,6 +4,7 @@ require 'discordrb'
 
 file = File.open "./config.json"
 data = JSON.load file
+file.close
 bot = Discordrb::Bot.new token: data['token']
 
 bot.message(start_with: 'irb') do |message|
