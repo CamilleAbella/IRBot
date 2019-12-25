@@ -6,13 +6,13 @@ file = File.open "./config.json"
 data = JSON.load file
 bot = Discordrb::Bot.new token: data['token']
 
-bot.message(start_with: /^eval\s+\S+/) do |message|
+bot.message(start_with: 'irb') do |message|
   if data['authorized'].include? message.author.id
-    message.content.sub! /^eval\s+/, ''
+    message.content.sub! 'irb', ''
     message.content.strip!
     response = ''
     begin
-      response += eval(message.content)
+      response += eval message.content
     rescue StandardError => error
       response = error.message
     end
